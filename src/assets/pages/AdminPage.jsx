@@ -17,8 +17,11 @@ function AdminPage() {
       credentials.username === "admin" &&
       credentials.password === "password"
     ) {
-      showAlert("Accesso riuscito!", "success");
+      // Clear any existing admin status first
+      localStorage.clear();
+      // Set the new admin status
       localStorage.setItem("isAdmin", "true");
+      showAlert("Accesso riuscito!", "success");
       navigate("/menu");
     } else {
       showAlert("Credenziali non valide", "error");

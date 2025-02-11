@@ -51,7 +51,6 @@
   color: #333;
 }
 
-/* Admin form */
 .admin-container {
   max-width: 400px;
   margin: 50px auto;
@@ -81,7 +80,6 @@
   cursor: pointer;
 }
 
-/* Pizza form */
 .pizza-form {
   display: flex;
   flex-direction: column;

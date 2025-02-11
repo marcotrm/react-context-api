@@ -13,9 +13,24 @@ const initialData = {
 function Menu() {
   const [menu, setMenu] = useState([]);
   const [pizza, setPizza] = useState(initialData);
+  const [isAdmin, setIsAdmin] = useState(false);
   const { showAlert } = useAlert();
   const navigate = useNavigate();
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+  useEffect(() => {
+    const checkAdminStatus = () => {
+      const adminStatus = localStorage.getItem("isAdmin");
+      setIsAdmin(adminStatus === "true");
+    };
+
+    checkAdminStatus();
+
+    window.addEventListener("storage", checkAdminStatus);
+
+    return () => {
+      window.removeEventListener("storage", checkAdminStatus);
+    };
+  }, []);
 
   function fetchData() {
     axios.get("http://localhost:3000/posts").then((res) => setMenu(res.data));
@@ -37,6 +52,9 @@ function Menu() {
       showAlert("Pizza aggiunta con successo!", "success");
     });
   };
+  const handleAdminClick = () => {
+    navigate("/admin");
+  };
 
   //funzione per rimuovere un "prodotto"
   function handleDelete(id) {
@@ -50,10 +68,13 @@ function Menu() {
   return (
     <div className="body">
       <div className="menu-container">
-        <h1 className="menu-title">Il Nostro Menù</h1>
-        <button className="admin-button" onClick={() => navigate("/admin")}>
-          MODIFICA
-        </button>
+        <div className="menu-header">
+          <h1 className="menu-title">Il Nostro Menù</h1>
+          <button className="admin-button" onClick={handleAdminClick}>
+            ✏️
+          </button>
+        </div>
+
         <div className="menu-grid">
           {menu.map((pizza) => (
             <div key={pizza.id} className="menu-item">
@@ -77,7 +98,7 @@ function Menu() {
         </div>
 
         {isAdmin && (
-          <>
+          <div className="admin-section">
             <h2>Aggiungi Pizza</h2>
             <form onSubmit={handleSubmitForm} className="pizza-form">
               <input
@@ -112,7 +133,7 @@ function Menu() {
               />
               <button type="submit">Aggiungi Pizza</button>
             </form>
-          </>
+          </div>
         )}
       </div>
     </div>
