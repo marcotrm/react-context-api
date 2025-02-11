@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAlert } from "../components/contexts/AlertContext";
-import { FaPencilAlt } from "react-icons/fa";
 
 const initialData = {
   name: "",
@@ -53,7 +52,7 @@ function Menu() {
       <div className="menu-container">
         <h1 className="menu-title">Il Nostro Menù</h1>
         <button className="admin-button" onClick={() => navigate("/admin")}>
-          <FaPencilAlt />
+          MODIFICA
         </button>
         <div className="menu-grid">
           {menu.map((pizza) => (
