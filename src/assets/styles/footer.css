@@ -1,0 +1,50 @@
+footer {
+  background-color: #1e1e1e;
+  padding-top: 80px;
+}
+
+.container-footer {
+  width: 1200px;
+  margin: auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+}
+
+.footer-top img {
+  width: 15%;
+}
+
+.footer-top .number h1 {
+  color: white;
+}
+
+.footer-top .number p {
+  color: grey;
+  font-size: 20px;
+}
+
+.maps img {
+  width: 100%;
+  padding-top: 20px;
+  border-radius: 20px;
+  padding-bottom: 30px;
+}
+
+.hr-cont {
+  justify-content: center;
+  display: flex;
+}
+
+.hr-cont hr {
+  width: 80%;
+}
+
+.bottom-footer p {
+  color: gray;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}

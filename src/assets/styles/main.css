@@ -1,0 +1,230 @@
+main {
+  background-color: #212121;
+  min-height: 100vh;
+}
+/* FIRST MAIN */
+.main-container {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.left-main {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-main h3 {
+  color: orange;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.left-main h1 {
+  color: white;
+  font-size: 44px;
+  font-weight: 10px;
+}
+
+.left-main p {
+  color: #acb4b7;
+  font-size: 24px;
+}
+
+.right-main {
+  width: 70%;
+  background-repeat: no-repeat;
+  min-height: 380px;
+  background-size: cover;
+  background-image: url("https://media.gettyimages.com/id/1287249478/it/foto/pizzaiolo-prepara-la-pizza-al-ristorante.jpg?s=612x612&w=gi&k=20&c=5fmL8zP5sA6h5evIJ-WLHHRKVmNyjyA8STPCgV3NObU=");
+  margin-left: 30px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.btn-main-container {
+  margin-top: 50px;
+  width: 100%;
+  min-height: 40px;
+  background-color: orange;
+  border: 2px solid black;
+  position: absolute;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+}
+
+.btn-container button {
+  padding: 16px;
+  color: black;
+  font-weight: 800;
+  background-color: #ed9807;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  position: relative;
+  top: 40px;
+  left: 0;
+  transition: 0.3s ease, transform 0.2s ease;
+}
+
+.btn-container button:hover {
+  background-color: #8a3202;
+}
+
+button:active {
+  transform: scale(1.2);
+}
+
+/* ANIMATION */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Applicazione delle animazioni */
+.slide-left {
+  animation: slideLeft 0.9s ease-out;
+}
+
+.zoom-in {
+  animation: zoomIn 0.9s ease-out 0.4s both;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in 0.6s both;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out 0.9s both;
+}
+/* ANIMATION */
+/* FIRST MAIN */
+
+/* SECOND MAIN */
+.container {
+  width: 1000px;
+  margin: auto;
+  margin-top: 70px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.col {
+  width: calc(100% / 3);
+  padding: 12px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.col h2,
+p {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.col h2 {
+  color: darkslategray;
+  font-weight: 12px;
+}
+.col p {
+  font-size: 16px;
+  color: gray;
+}
+/* SECOND MAIN */
+
+/* THIRD MAIN */
+.big-container {
+  width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 120px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.col-left {
+  width: 65%;
+}
+
+.col-left img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.col-right {
+  width: 35%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.col-right h4 {
+  color: orange;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 20px;
+}
+
+.col-right p {
+  color: gray;
+  font-size: 18px;
+}
+
+/* THIRD MAIN */
