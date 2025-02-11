@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAlert } from "../components/contexts/AlertContext";
+import { FaPencilAlt } from "react-icons/fa";
 
 const initialData = {
   name: "",
@@ -12,6 +14,9 @@ const initialData = {
 function Menu() {
   const [menu, setMenu] = useState([]);
   const [pizza, setPizza] = useState(initialData);
+  const { showAlert } = useAlert();
+  const navigate = useNavigate();
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   function fetchData() {
     axios.get("http://localhost:3000/posts").then((res) => setMenu(res.data));
@@ -30,6 +35,7 @@ function Menu() {
     axios.post("http://localhost:3000/posts", pizza).then((response) => {
       setMenu((prev) => [...prev, response.data]);
       setPizza(initialData);
+      showAlert("Pizza aggiunta con successo!", "success");
     });
   };
 
@@ -46,6 +52,9 @@ function Menu() {
     <div className="body">
       <div className="menu-container">
         <h1 className="menu-title">Il Nostro Menù</h1>
+        <button className="admin-button" onClick={() => navigate("/admin")}>
+          <FaPencilAlt />
+        </button>
         <div className="menu-grid">
           {menu.map((pizza) => (
             <div key={pizza.id} className="menu-item">
@@ -68,38 +77,44 @@ function Menu() {
           ))}
         </div>
 
-        <h2>Aggiungi Pizza</h2>
-        <form onSubmit={handleSubmitForm}>
-          <input
-            type="text"
-            placeholder="Inserisci URL immagine"
-            value={pizza.image}
-            onChange={(event) => handlemenu("image", event.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Inserisci il nome della pizza"
-            value={pizza.name}
-            onChange={(event) => handlemenu("name", event.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Inserisci gli ingredienti"
-            value={pizza.ingredients}
-            onChange={(event) => handlemenu("ingredients", event.target.value)}
-            required
-          />
-          <input
-            type="text"
-            placeholder="Inserisci il prezzo"
-            value={pizza.price}
-            onChange={(event) => handlemenu("price", event.target.value)}
-            required
-          />
-          <button type="submit">Aggiungi Pizza</button>
-        </form>
+        {isAdmin && (
+          <>
+            <h2>Aggiungi Pizza</h2>
+            <form onSubmit={handleSubmitForm} className="pizza-form">
+              <input
+                type="text"
+                placeholder="Inserisci URL immagine"
+                value={pizza.image}
+                onChange={(event) => handlemenu("image", event.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Inserisci il nome della pizza"
+                value={pizza.name}
+                onChange={(event) => handlemenu("name", event.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="Inserisci gli ingredienti"
+                value={pizza.ingredients}
+                onChange={(event) =>
+                  handlemenu("ingredients", event.target.value)
+                }
+                required
+              />
+              <input
+                type="text"
+                placeholder="Inserisci il prezzo"
+                value={pizza.price}
+                onChange={(event) => handlemenu("price", event.target.value)}
+                required
+              />
+              <button type="submit">Aggiungi Pizza</button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

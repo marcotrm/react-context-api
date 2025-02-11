@@ -8,6 +8,7 @@ import "./styles/main.css";
 import "./styles/Footer.css";
 import "./styles/menu.css";
 import "./styles/pizzaDetail.css";
+import "./styles/alert.css";
 
 import App from "./App.jsx";
 
